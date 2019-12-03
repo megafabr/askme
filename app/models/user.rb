@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
   # значением user_id равный user.id.
   has_many :questions
 
+  before_validation :username_downcase
+  attr_accessor :username
+  def username_downcase
+    @username = @username.downcase
+  end
+
   # Валидация, которая проверяет, что поля email и username не пустые и не равны
   # nil. Если не задан email и username, объект не будет сохранен в базу.
   validates :email, :username, presence: true
@@ -40,6 +46,9 @@ class User < ActiveRecord::Base
 
   # Проверка формата электронной почты пользователя
   validates_format_of :email, :with => /@/
+
+  # юзернеймы пользователей попадали только в нижнем регистре
+  # нельзя создать двух пользователей, с никами, отличающимися только регистром букв
 
 
   # Валидация, которая проверяет совпадения значений полей password и
