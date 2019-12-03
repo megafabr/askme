@@ -1,4 +1,3 @@
-r# (c) goodprogrammer.ru
 
 # Эта библиотека понадобится нам для шифрования.
 require 'openssl'
@@ -29,20 +28,24 @@ class User < ActiveRecord::Base
   # Валидация, которая проверяет, что поля email и username не пустые и не равны
   # nil. Если не задан email и username, объект не будет сохранен в базу.
   validates :email, :username, presence: true
-
-  # Валидация, которая проверяет уникальность полей email и username. Если в
-  # базе данных уже есть записи с такими email и/или username, объект не будет
-  # сохранен в базу.
   validates :email, :username, uniqueness: true
-
-  # Поле password нужно только при создании (create) нового юзера — регистрации.
-  # При аутентификации (логине) мы будем сравнивать уже зашифрованные поля.
   validates :password, presence: true, on: :create
+
+  # Проверка максимальной длины юзернейма пользователя (не больше 40 символов)
+  validates :username, length: { maximum: 4 }
+
+  # Проверка формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
+  validates :username, format: { with:  /\A[a-zA-Z0-9_]+\z/,
+                                 message: "латинские буквы, цифры, и знак _" }
+
+  # Проверка формата электронной почты пользователя
+  validates_format_of :email, :with => /@/
+
 
   # Валидация, которая проверяет совпадения значений полей password и
   # password_confirmation. Понадобится при создании формы регистрации, чтобы
   # снизить число ошибочно введенных паролей.
-  validates_confirmation_of :password
+  #validates_confirmation_of :password
 
   # Ошибки валидаций можно посмотреть методом errors.
 
