@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, on: :create
 
   # Проверка максимальной длины юзернейма пользователя (не больше 40 символов)
-  validates :username, length: { maximum: 4 }
+  validates :username, length: { maximum: 40 }
 
   # Проверка формата юзернейма пользователя (только латинские буквы, цифры, и знак _)
   validates :username, format: { with:  /\A[a-zA-Z0-9_]+\z/,
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   # Валидация, которая проверяет совпадения значений полей password и
   # password_confirmation. Понадобится при создании формы регистрации, чтобы
   # снизить число ошибочно введенных паролей.
-  #validates_confirmation_of :password
+  validates_confirmation_of :password
 
   # Ошибки валидаций можно посмотреть методом errors.
 
