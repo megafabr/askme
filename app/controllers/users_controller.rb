@@ -23,8 +23,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.new(
-      name: 'Edik',
-      username: 'helper',
+      name: 'Prima',
+      username: 'inspector',
       avatar_url: 'https://img3.goodfon.ru/original/4000x3000/a/9b/'  \
           'glaza-zhivotnye-zelenyy-lyagushka.jpg'
     )

@@ -38,7 +38,7 @@
   clear: both;
 }
 
-.colimn-3-4 {
+.column-3-4 {
   float: left;
   width: 75%;
 }
@@ -64,7 +64,7 @@
 
 
 @media (max-width: 960px) {
-  .colimn-3-4,
+  .column-3-4,
   .column-1-4,
   .column-1-4-right,
   .column-1-2 {

@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :questions
 
   before_validation :username_downcase
-  attr_accessor :username
+  #attr_accessor :username
   def username_downcase
     @username = @username.downcase
   end
