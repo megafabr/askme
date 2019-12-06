@@ -7,6 +7,11 @@ module ApplicationHelper
     end
   end
 
+  # Хелпер, рисующий span тэг с иконкой из font-awesome
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
+  end
+
   def endings(number, word, word_singular, word_plural)
 
     if number <= 20
