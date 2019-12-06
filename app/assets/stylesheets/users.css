@@ -57,10 +57,10 @@
   .user-question-form {
     margin-left: 0;
   }
-}
 
-.user-question-form-div {
-  display: none;
+  .user-question-form-div {
+    display: none;
+  }
 }
 
 @media (min-width: 960px) {
