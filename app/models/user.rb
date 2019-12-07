@@ -21,8 +21,8 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
 
-  before_validation :self.username&.downcase!
-  before_validation :self.email&.downcase!
+  before_validation :username_downcase
+  before_validation :email_downcase
 
   before_save :encrypt_password
 
@@ -56,5 +56,13 @@ class User < ApplicationRecord
         )
       )
     end
+  end
+
+  def username_downcase
+    self.username&.downcase!
+  end
+
+  def email_downcase
+    self.email&.downcase!
   end
 end
