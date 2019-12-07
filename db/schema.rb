@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_033710) do
+ActiveRecord::Schema.define(version: 2019_12_07_071600) do
 
   create_table "questions", force: :cascade do |t|
     t.string "text"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_12_07_033710) do
     t.string "avatar_url"
     t.string "add_index"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
