@@ -2,8 +2,7 @@
 # Эта библиотека понадобится нам для шифрования.
 require 'openssl'
 
-class User < ActiveRecord::Base
-
+class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
 
@@ -22,8 +21,9 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
 
-  before_validation :username_downcase
-  #before_create :username_downcase
+  before_validation :self.username&.downcase!
+  before_validation :self.email&.downcase!
+
   before_save :encrypt_password
 
   def self.hash_to_string(password_hash)
@@ -55,12 +55,6 @@ class User < ActiveRecord::Base
           password, password_salt, ITERATIONS, DIGEST.length, DIGEST
         )
       )
-    end
-  end
-
-  def username_downcase
-    if self.username
-      self.username = username.downcase
     end
   end
 end
