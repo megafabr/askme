@@ -20,7 +20,6 @@ class User < ApplicationRecord
   validates_format_of :email, :with => /@/
   validates_confirmation_of :password
 
-  private
 
   before_validation :username_downcase, :email_downcase
 
@@ -58,6 +57,8 @@ class User < ApplicationRecord
     end
   end
 
+  private
+  
   def username_downcase
     self.username&.downcase!
   end
