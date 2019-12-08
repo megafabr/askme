@@ -21,6 +21,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   private
+
   before_validation :username_downcase, :email_downcase
 
   before_save :encrypt_password

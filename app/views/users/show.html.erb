@@ -42,6 +42,7 @@
     <div class="question-list">
       <% @questions.each do |question| %>
         <%= render partial: 'questions/question', object: question %>
+        <% question.answer = "I don't know" %>
       <% end %>
     </div>
     <% number_of_questions = @questions.count %>
