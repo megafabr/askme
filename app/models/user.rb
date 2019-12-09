@@ -58,7 +58,7 @@ class User < ApplicationRecord
   end
 
   private
-  
+
   def username_downcase
     self.username&.downcase!
   end
