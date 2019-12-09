@@ -47,11 +47,9 @@
     </div>
     <% number_of_questions = @questions.count %>
 
-    <h2>У вас <%= @questions.count %> <%= endings(number_of_questions, 'вопрос', 'вопроса', 'вопросов') %></h2>
-<!--    <h2>Вы ответили на <%#= @questions.answer.count %></h2>-->
+    <h2>У вас <%= number_of_questions %> <%= endings(number_of_questions, 'вопрос', 'вопроса', 'вопросов') %></h2>
+    <h2>У вас <%= number_of_questions %> <%= endings(number_of_questions, 'вопрос', 'вопроса', 'вопросов') %>, а вам осталось ответить на 1 вопрос %></h2>
 
-    <%# @questions.each do |question| %>
-      <%#= render partial: 'questions/question', object: answer %>
-    <%# end %>
+
 
   </div>
