@@ -3,9 +3,9 @@
     <%= @user.name %>
   </h1>
 
-  <div>
-  <!--  <img src="<%#= @user.avatar_url %>" alt="[Foto]" style="width: 200px" />-->
-    <%= image_tag user_avatar(@user), alt: "[Foto]", style: "width: 300px" %>
+  <div class="user-image-div">
+    <%#= image_tag user_avatar(@user), alt: "[Foto]", style: "width: 300px" %>
+    <%= image_tag user_avatar(@user), class: 'user-image', alt: '[Фото]' %>
   </div>
 
   <h2 class="title-small buffer-both">
@@ -18,7 +18,7 @@
 </div>
 
 
-<div class="user-question-form-div column-1-4 column-1-4-right" id="ask-form">
+<div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
   <div class="user-question-form buffer-both">
     <div class="form">
       <%= form_for @new_question do |f| %>

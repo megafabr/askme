@@ -22,3 +22,5 @@ end
 
 gem 'listen'
 
+gem 'jquery-rails'
+
