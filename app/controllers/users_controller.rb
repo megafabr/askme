@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   before_action :load_user, except: [:index, :new, :create]
 
+  before_action :authorize_user, except: [:index, :new, :create, :show]
+
   def index
     @users = User.all
   end
@@ -41,6 +43,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    reject_user unless @user == current_user
+  end
 
   def load_user
     @user ||= User.find params[:id]
