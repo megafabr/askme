@@ -1,18 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :load_user, except: [:index, :new, :create]
   def index
-    #@users = [
-    #  User.new(
-    #    id: 1,
-    #    name: 'Edik',
-    #    username: 'wildfrog',
-    #    avatar_url: 'https://img3.goodfon.ru/original/4000x3000/a/9b/glaza-zhivotnye-zelenyy-lyagushka.jpg'
-    #  ),
-    #  User.new(
-    #    id: 2,
-    #    name: 'Misha',
-    #    username: 'arist'
-    #  )
-    #]
     @users = User.all
   end
 
@@ -31,11 +20,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Данные обновлены'
+    else
+      render 'edit'
+    end
   end
 
   def show
-    @user = User.find params[:id]
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build
@@ -43,6 +38,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def load_user
+    @user ||= User.find params[:id]
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
