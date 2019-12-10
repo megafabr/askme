@@ -47,19 +47,19 @@
         <%= render partial: 'questions/question', object: question %>
       <% end %>
 
-      <% number_of_questions = @questions.count %>
-      <% answered_questions = number_of_questions - @no_answered_questions %>
+      <%# number_of_questions = @questions.count %>
+      <%# answered_questions = number_of_questions - @no_answered_questions %>
 
-      <p>
-        У вас <%= number_of_questions %>
-          <%= endings(number_of_questions, 'вопрос', 'вопроса', 'вопросов') %>
-      </p>
-      <p>
-        Ответили на <%= answered_questions %>
-          <%= endings(answered_questions, 'вопрос', 'вопроса', 'вопросов') %> <br>
-             Осталось ответить на <%= @no_answered_questions %>
-              <%= endings(@no_answered_questions, 'вопрос', 'вопроса', 'вопросов') %>
-      </p>
+<!--      <p>-->
+<!--        У вас <%#= number_of_questions %>-->
+          <%#= endings(number_of_questions, 'вопрос', 'вопроса', 'вопросов') %>
+<!--      </p>-->
+<!--      <p>-->
+<!--        Ответили на <%#= answered_questions %>-->
+<!--          <%#= endings(answered_questions, 'вопрос', 'вопроса', 'вопросов') %> <br>-->
+<!--             Осталось ответить на <%#= @no_answered_questions %>-->
+              <%#= endings(@no_answered_questions, 'вопрос', 'вопроса', 'вопросов') %>
+<!--      </p>-->
     </div>
   </div>
 </div>

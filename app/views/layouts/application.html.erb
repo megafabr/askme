@@ -3,6 +3,8 @@
   <head>
    <meta charset="UTF-8" />
     <title>Хорошие вопросы</title>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
@@ -21,7 +23,7 @@
             <%= link_to "@#{current_user.username}", user_path(current_user) %> |
             <%= link_to 'Выйти', log_out_path %>
           <% else %>
-            <% Если нету — ссылки на регистрацию и логин %>
+            <%# Если нету — ссылки на регистрацию и логин %>
             <%= link_to 'Зарегистрироваться', sign_up_path,
                         class: 'button button-light button-small' %>
             <%= link_to 'Войти', log_in_path,
