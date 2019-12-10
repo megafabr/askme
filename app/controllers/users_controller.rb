@@ -45,9 +45,11 @@ class UsersController < ApplicationController
     ]
 
     @new_question = Question.new
+    @no_answered_questions = @questions.map { |question| question.answer == nil }.count
   end
 
   private
+
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
                                  :name, :username, :avatar_url)

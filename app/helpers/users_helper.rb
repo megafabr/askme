@@ -22,8 +22,4 @@ module UsersHelper
     end
     return word_plural
   end
-
-  def no_answered_questions
-    @questions.map { |question| question.answer == nil }.count
   end
-end
