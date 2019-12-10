@@ -34,19 +34,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.new(
-      name: 'Prima',
-      username: 'inspector',
-      avatar_url: 'https://img3.goodfon.ru/original/4000x3000/a/9b/'  \
-          'glaza-zhivotnye-zelenyy-lyagushka.jpg'
-    )
+    @user = User.find params[:id]
+    @questions = @user.questions.order(created_at: :desc)
 
-    @questions = [
-      Question.new(text: 'Как дела?', created_at: Date.parse('02.12.2020')),
-      Question.new(text: 'В чем смысл жизни?', created_at: Date.parse('02.12.2020'))
-    ]
-
-    @new_question = Question.new
+    @new_question = @user.questions.build
     @no_answered_questions = @questions.map { |question| question.answer == nil }.count
   end
 
